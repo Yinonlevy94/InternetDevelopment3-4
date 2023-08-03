@@ -1,6 +1,8 @@
 .App {
-  background-image: url('./imgs/wallpapper.jpg');
+  background-image: url('https://e1.pxfuel.com/desktop-wallpaper/376/833/desktop-wallpaper-there-are-big-plans-in-store-for-this-year-s-pokemon-day-pokemon-day.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   width: 100vw;
   height: 100vh;
 }
@@ -29,5 +31,6 @@
 .App-link {
   color: #61dafb;
 }
+
 
 

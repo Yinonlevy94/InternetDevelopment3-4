@@ -3,6 +3,7 @@ import Main from './components/Main';
 import Basket from './components/Basket';
 import data from './data';
 
+
 import { useState } from 'react';
 function App() {
   const { products } = data;
@@ -31,16 +32,31 @@ function App() {
       );
     }
   };
+  const handleCheckout = () => {
+    fetch('http://localhost:8000/api/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Received:", data.message); 
+      })
+      .catch((error) => console.error('Error during checkout:', error));
+  };
   return (
     <div className="App">
       <Header countCartItems={cartItems.length}></Header>
       <div className="row">
         <Main products={products} onAdd={onAdd}></Main>
         <Basket
-          cartItems={cartItems}
-          onAdd={onAdd}
-          onRemove={onRemove}
-        ></Basket>
+        cartItems={cartItems}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        onCheckout={handleCheckout} 
+      ></Basket>
       </div>
     </div>
   );
